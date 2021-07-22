@@ -1,9 +1,19 @@
----
-- name: Demonstrating Pluggable Terraform-in-Ansible
+#Ansible Playbook to deploy Terraform
+
+- name: Deploy Terraform
   hosts: localhost
-  gather_facts: false
-#  become: true
-  connection: local
   tasks:
-    - import_role:
-       name: terraform
+    - name: Define backend_configuration
+       terraform:
+         project_path: 'NTTData/Ansibleplaybook'
+         state:present                            
+         force_init: true
+         backend_config:
+           bucket:"NTTDATA"            
+           region:"ap-south-1"
+           key:"nttdata.tfstate"
+      
+    - name: Deploying the Infra
+       EC2 instance:
+       name:"NTTdata  # ec2 instance name
+  
