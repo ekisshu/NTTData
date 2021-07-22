@@ -15,5 +15,5 @@
       
     - name: Deploying the Infra
        EC2 instance:
-       name:"NTTdata  # ec2 instance name
+       name:"NTTdata"  # ec2 instance name
   
